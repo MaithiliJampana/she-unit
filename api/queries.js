@@ -27,9 +27,9 @@ const getUserById = (request, response) => {
 }
 
 const createUser = (request, response) => {
-    const { id, name, pwd, email, create, lastlog } = request.body
+    const { firstName, lastName, email, role } = request.body
 
-    pool.query('INSERT INTO users (user_id, username, password, email, created_on, last_login) VALUES ($1, $2, $3, $4, $5, $6)', [id, name, pwd, email, create, lastlog], (error, results) => {
+    pool.query('INSERT INTO users (firstname, lastname, email, role) VALUES ($1, $2, $3, $4)', [firstName, lastName, email, role], (error, results) => {
         if (error) {
             throw error
         }

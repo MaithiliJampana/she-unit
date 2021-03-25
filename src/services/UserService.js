@@ -1,10 +1,10 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const db = require('./dbhelpers/queries.js')
+//const express = require('express')
+//const bodyParser = require('body-parser')
+//const app = express()
+//const db = require('./dbhelpers/queries.js')
 //const port = 3000
 
-app.use(bodyParser.json())
+/*app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
         extended: true,
@@ -32,5 +32,9 @@ export async function getAllUsers() {
 }
 
 export async function createUser(data) {
-    app.get('/users', db.getUsers)
+    const response = await fetch(`/api/users`, {
+        method: 'POST',
+        body: JSON.stringify({user: data})
+    })
+    return await response.json();
 }
