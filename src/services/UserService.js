@@ -1,3 +1,30 @@
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const db = require('./dbhelpers/queries.js')
+//const port = 3000
+
+app.use(bodyParser.json())
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+)
+
+/*app.get('/', (request, response) => {
+    response.json({ info: 'Node.js, Express, and Postgres API' })
+})
+
+
+app.get('/users/:id', db.getUserById)
+app.post('/users', db.createUser)
+app.put('/users/:id', db.updateUser)
+app.delete('/users/:id', db.deleteUser)
+
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`)
+})
+*/
 export async function getAllUsers() {
 
     const response = await fetch('/api/users');
@@ -5,11 +32,5 @@ export async function getAllUsers() {
 }
 
 export async function createUser(data) {
-    console.log("fdfdfdfdf")
-    // const response = await fetch(`/api/user`, {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify({user: data})
-    //   })
-    // return await response.json();
+    app.get('/users', db.getUsers)
 }
